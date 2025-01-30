@@ -1,5 +1,8 @@
 name: Main Branch Pipeline
-on: [push]
+on:
+  push:
+    branches:
+      - 'main'
 run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
   build:
