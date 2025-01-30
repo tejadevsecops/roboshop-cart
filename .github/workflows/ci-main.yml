@@ -1,6 +1,9 @@
 name: Main Branch Pipeline
-on: [push]
-run-name: ${{ github.sha }}
+on:
+  push:
+    branches:
+      - 'main'
+run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
   build:
     runs-on: self-hosted
@@ -25,7 +28,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           echo
-          
+
   QA:
     runs-on: self-hosted
     needs: DEV
@@ -34,7 +37,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           echo
-          
+
   UAT:
     runs-on: self-hosted
     needs: QA
@@ -43,7 +46,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           echo
-          
+
   PROD:
     runs-on: self-hosted
     needs: UAT
