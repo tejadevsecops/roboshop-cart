@@ -5,16 +5,16 @@ on:
       - 'main'
 run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
-  build:
+  tests:
     runs-on: self-hosted
     steps:
       - uses: actions/checkout@v4
       - run: |
           echo
 
-  tests:
+  build:
     runs-on: self-hosted
-    needs: build
+    needs: tests
     steps:
       - uses: actions/checkout@v4
       - run: |
@@ -22,7 +22,7 @@ jobs:
 
   DEV:
     runs-on: self-hosted
-    needs: tests
+    needs: build
     environment: DEV
     steps:
       - uses: actions/checkout@v4

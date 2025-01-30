@@ -6,13 +6,6 @@ on:
       - '!main'
 run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
-  build:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
-
   tests:
     runs-on: self-hosted
     needs: build
