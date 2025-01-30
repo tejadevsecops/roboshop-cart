@@ -6,9 +6,5 @@ on:
       - '!main'
 run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
-  tests:
-    runs-on: self-hosted
-    steps:
-      - uses: actions/checkout@v4
-      - run: |
-          echo
+  call-workflow:
+    uses: tejadevsecops/github-reusable-actions/.github/workflows/ci-dev-branch.yml@main
