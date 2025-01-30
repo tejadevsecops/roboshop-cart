@@ -1,5 +1,6 @@
 name: Main Branch Pipeline
 on: [push]
+run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
   build:
     runs-on: self-hosted
