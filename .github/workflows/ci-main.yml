@@ -7,5 +7,7 @@ run-name: ${{ github.sha }} | ${{ github.event.head_commit.message }}
 jobs:
   call-workflow:
     uses: tejadevsecops/github-reusable-actions/.github/workflows/ci-main.yml@main
+    with:
+      componentName: cart
 
 #
